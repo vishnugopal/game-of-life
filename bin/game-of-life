@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+# Built-in Requires
+require "bundler/setup"
+require "pathname"
+
+# Add lib/ to path
+$:.push(Pathname.new(File.dirname(__FILE__)).join("..", "lib"))
+
+# Library Requires
+require "presenter"
+
+p = Presenter.with_example_grid
+p.play
