@@ -19,7 +19,7 @@ describe Cell do
     c.alive?.should == false
   end
   
-  it "should be able to set it's position" do
+  it "should be able to set its position" do
     c.x = 10
     c.y = 100
     
