@@ -8,32 +8,13 @@ class Grid
   end
   
   def alive_neighbours(cell)
-    x = cell.x
-    y = cell.y
-    
-    alive_neighbours_count = 0 
-
-    self.cells.each do |neighbour_cell|     
-      ((x - 1)..(x + 1)).each do |neighbour_cell_x|
-        ((y - 1)..(y + 1)).each do |neighbour_cell_y|
-          if neighbour_cell.x == neighbour_cell_x and 
-              neighbour_cell.y == neighbour_cell_y
-            next if neighbour_cell.x == x and neighbour_cell.y == y
-            alive_neighbours_count += 1 if neighbour_cell.alive?
-          end
-        end
-      end
-    end
-
-    alive_neighbours_count
+    self.cells.select { |current_cell| current_cell.neighbour_of? cell }.
+      count(&:alive?)
   end
   
   def cell_at(x, y)
-    self.cells.each do |cell|
-      return cell if cell.x == x and cell.y == y 
-    end
-    
-    return false
+    self.cells.select { |current_cell| current_cell.coordinate.x == x &&
+       current_cell.coordinate.y == y }.first
   end
   
   # Create a new grid evolved from the old.

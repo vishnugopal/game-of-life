@@ -31,9 +31,9 @@ g = Grid.new
 (0..10).each do |x|
   (0..10).each do |y|
     c = Cell.new
-    c.x = x
-    c.y = y
-    c.make_alive if c.x % 2 == 0
+    coordinate = Coordinate.new(x, y)
+    c.coordinate = coordinate
+    c.make_alive if x % 2 == 0
     g.cells << c
   end
 end
