@@ -8,12 +8,11 @@ class Grid
   end
   
   def alive_neighbours(cell)
-    self.cells.count { |current_cell| current_cell.alive_neighbour_of? cell }
+    self.cells.count { |each_cell| each_cell.alive_neighbour_of?(cell) }
   end
   
-  def cell_at(x, y)
-    self.cells.select { |current_cell| current_cell.coordinate.x == x &&
-       current_cell.coordinate.y == y }.first
+  def cell_at(coordinate)
+    self.cells.select { |each_cell| each_cell.coordinate == coordinate }.first
   end
   
   # Create a new grid evolved from the old.
