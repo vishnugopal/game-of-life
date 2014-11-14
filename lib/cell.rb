@@ -45,8 +45,8 @@ class Cell
     end
   end
   
-  def neighbour_of?(other)
-    coordinate.neighbour?(other.coordinate)
+  def alive_neighbour_of?(other)
+    coordinate.neighbour?(other.coordinate) && self.alive?
   end
   
   def evolve(neighbour_count)

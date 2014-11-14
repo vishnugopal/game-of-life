@@ -8,8 +8,7 @@ class Grid
   end
   
   def alive_neighbours(cell)
-    self.cells.select { |current_cell| current_cell.neighbour_of? cell }.
-      count(&:alive?)
+    self.cells.count { |current_cell| current_cell.alive_neighbour_of? cell }
   end
   
   def cell_at(x, y)
